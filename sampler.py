@@ -23,7 +23,7 @@ class Sampler:
             
             mask_i = np.random.binomial(1, feature_frac, size=x.shape) # binary matrix (value 1 depends on feature_frac)
             neighbour = x * mask_i + (1 - mask_i) * baseline # apply baseline to masked vlaues
-            distance_sq_i = np.sum((mask_i - np.ones_like(mask_i))**2)
+            distance_sq_i = np.sum((x - neighbour)**2)
 
 
             self.perturbations.append(neighbour)
